@@ -31,3 +31,4 @@ docker run --rm -p 5000:5000 workshop-app:local
 | 2 | SQL injection `/search`, XSS `/hello`, debug=True | `app/app.py` |
 | 3 | Old vulnerable packages | `requirements.txt` |
 | 4 | Old base image, root user | `Dockerfile` |
+Check-1
