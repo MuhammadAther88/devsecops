@@ -1,5 +1,5 @@
 # INTENTIONALLY WEAK (Lab 4): old base image, runs as root, no pinned digest
-FROM python:3.8
+FROM python:3.9-bullseye
 
 WORKDIR /app
 COPY requirements.txt .
