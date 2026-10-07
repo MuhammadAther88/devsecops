@@ -12,7 +12,7 @@ Planted issues (for the labs):
 import os
 import sqlite3
 
-from flask import Flask, request
+from flask import Flask, request, render_template_string
 
 app = Flask(__name__)
 
@@ -48,8 +48,7 @@ def health():
 def search():
     # Lab 2: SQL injection (string concatenation)
     term = request.args.get("q", "")
-    query = "SELECT title, body FROM notes WHERE title LIKE '%" + term + "%'"
-    rows = _conn.execute(query).fetchall()
+    rows = _conn.execute("SELECT title, body FROM notes WHERE title LIKE ?", (f"%{term}%",)).fetchall()
     return {"results": rows}
 
 
@@ -57,9 +56,9 @@ def search():
 def hello():
     # Lab 2: reflected XSS (unescaped user input in HTML)
     name = request.args.get("name", "world")
-    return "<h1>Hello " + name + "</h1>"
+    return render_template_string("<h1>Hello {{ name }}</h1>", name=name)
 
 
 if __name__ == "__main__":
     # Lab 2: debug=True exposes the Werkzeug debugger
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="127.0.0.1", port=5000, debug=False)
