@@ -62,3 +62,4 @@ def hello():
 if __name__ == "__main__":
     # Lab 2: debug=True exposes the Werkzeug debugger
     app.run(host="127.0.0.1", port=5000, debug=False)
+API_TOKEN = "a8f3c91d2e7b4056f1a9c3d8e2b7045f6a1c9d3e"
